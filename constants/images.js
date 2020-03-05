@@ -9,7 +9,8 @@ const IMAGE = {
     ICON_NOTIFICATION_BLACK: require('../icons/noti-black.png'),
     ICON_ACCOUNT_RED: require('../icons/account-red.png'),
     ICON_ACCOUNT_BLACK: require('../icons/account-black.png'),
-    ICON_SEARCH: require('../icons/icon_search.png')
+    ICON_SEARCH: require('../icons/icon_search.png'),
+    ICON_BACK: require('../icons/back.png')
 }
 
 export {IMAGE}

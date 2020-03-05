@@ -10,6 +10,7 @@ import {HomeScreen} from './components/tabs/HomeScreen';
 import {FavoriteStoreScreen} from './components/tabs/FavoriteStoreScreen';
 import {NotificationScreen} from './components/tabs/NotificationScreen';
 import {AccountScreen} from './components/tabs/AccountScreen';
+import {ContactScreen} from './components/side_menu/ContactScreen';
 function HomeDetailScreen() {
   return (
     <View style={{ flex: 1 }}>
@@ -120,7 +121,7 @@ function TabNavigator() {
           }
 
           // You can return any component that you like here!
-          return <Image source={iconName} style={{ width: 20, height: 20}} />;
+          return <Image source={iconName} style={{ width: 22, height: 22}} />;
         },
       })}
       tabBarOptions={{
@@ -142,7 +143,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Trang chủ">
         <Drawer.Screen name="Trang chủ" component={TabNavigator} />
-        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Liên hệ" component={ContactScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
