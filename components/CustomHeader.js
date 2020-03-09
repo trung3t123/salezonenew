@@ -20,8 +20,8 @@ export class CustomHeader extends Component {
         }
 
         <View style={{ flex: 4, justifyContent: 'center', alignItems: 'center' }}>
-          <Image style={{ width: 150, height: 40 }}
-            source={IMAGE.ICON_LOGO} />
+          <Image source={IMAGE.ICON_LOGO} style={{ width: 150, height: 40 }}
+             />
         </View>
         <View style={{ flex: 1, borderColor: 'red', borderWidth: 1 }}>
           {/* <Image style={{ width: 55, height: 55, tintColor: 'white' }}

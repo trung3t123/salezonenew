@@ -3,7 +3,6 @@ import { Text, View, SafeAreaView, Image, TouchableOpacity, Button, StyleSheet, 
 import { CustomHeader } from '../../index';
 import { IMAGE } from '../../constants/images';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { NotificationScreen } from './NotificationScreen';
 import { NearStoreScreen } from './NearStoreScreen';
 import { HighlySearchedStores } from './HighlySearchedStores';
 const Tab = createMaterialTopTabNavigator();

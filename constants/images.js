@@ -10,9 +10,15 @@ const IMAGE = {
     ICON_ACCOUNT_RED: require('../icons/account-red.png'),
     ICON_ACCOUNT_BLACK: require('../icons/account-black.png'),
     ICON_SEARCH: require('../icons/icon_search.png'),
+<<<<<<< HEAD
     IMAGE_BACKGROUND: require('../assets/images/background-final.png'),
     ICON_LOGO_BACKGROUND: require('../assets/images/icon-Salezone.png'),
     LOGO_LOGIN: require('../assets/images/logo-login-Salezone.png'),
+=======
+    ICON_BACK: require('../icons/back.png'),
+    ICON_CONTACT: require('../icons/contact.png'),
+    IMAGE_MAP: require('../icons/map.png')
+>>>>>>> 32f58bebc5f21a80592e40315a915c93c04823d4
 }
 
 export {IMAGE}
