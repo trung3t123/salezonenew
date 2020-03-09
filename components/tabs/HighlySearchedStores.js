@@ -3,20 +3,15 @@ import { SafeAreaView, View, FlatList, StyleSheet, Text, Image } from 'react-nat
 import { CustomHeader } from '../../index';
 
 const DATA = [
-    { nameStore: 'Quán 1', addressStore: 'Địa chỉ 1', description: 'Mô tả 1', image_url: 'SaleZoneApp/icons/store.png' },
-    { nameStore: 'Quán 2', addressStore: 'Địa chỉ 1, Địa chỉ 1, Địa chỉ 1, Địa chỉ 1', description: 'Mô tả 1 Mô tả 1 Mô tả 1 Mô tả 1 Mô tả 1 Mô tả 1 Mô tả 1', image_url: 'https://reactnative.dev/img/tiny_logo.png' },
-    { nameStore: 'Quán 3', addressStore: 'Địa chỉ 1', description: 'Mô tả 1', image_url: 'https://reactnative.dev/img/tiny_logo.png' },
-    { nameStore: 'Quán 4', addressStore: 'Địa chỉ 1', description: 'Mô tả 1', image_url: 'https://reactnative.dev/img/tiny_logo.png' },
-    { nameStore: 'Quán 5', addressStore: 'Địa chỉ 1', description: 'Mô tả 1', image_url: 'https://reactnative.dev/img/tiny_logo.png' },
-    { nameStore: 'Quán 6', addressStore: 'Địa chỉ 1', description: 'Mô tả 1', image_url: 'https://reactnative.dev/img/tiny_logo.png' },
-    { nameStore: 'Quán 7', addressStore: 'Địa chỉ 1', description: 'Mô tả 1', image_url: 'https://reactnative.dev/img/tiny_logo.png' },
-    { nameStore: 'Quán 8', addressStore: 'Địa chỉ 1', description: 'Mô tả 1', image_url: 'https://reactnative.dev/img/tiny_logo.png' },
+    { nameStore: 'Quán 1', addressStore: 'Địa chỉ 1', description: 'Mô tả 1', image_url: 'public/images/banners/Quanlytaikhoancuahang.jpg' },
+  
 
 ]
+const urlServer = 'http://103.102.46.103:3000'
 function Item({ nameStore, addressStore, description, image_url }) {
     return (
         <View style={styles.container}>
-            <Image source={{ uri: image_url }} style={styles.photo} />
+            <Image source={{ uri:urlServer + image_url.slice(6)}} style={styles.photo} />
             <View style={styles.container_text}>
                 <Text style={styles.title}>{nameStore}</Text>
                 <Text style={styles.address}>{addressStore}</Text>

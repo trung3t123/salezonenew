@@ -11,6 +11,8 @@ import {FavoriteStoreScreen} from './components/tabs/FavoriteStoreScreen';
 import {NotificationScreen} from './components/tabs/NotificationScreen';
 import {AccountScreen} from './components/tabs/AccountScreen';
 import {ContactScreen} from './components/side_menu/ContactScreen';
+import {ProductScreen} from './components/side_menu/products/ProductScreen';
+import {MyStore} from './components/side_menu/mystore/MyStore';
 function HomeDetailScreen() {
   return (
     <View style={{ flex: 1 }}>
@@ -143,6 +145,8 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Trang chủ">
         <Drawer.Screen name="Trang chủ" component={TabNavigator} />
+        <Drawer.Screen name="Sản phẩm" component={ProductScreen} />
+        <Drawer.Screen name="Cửa hàng của tôi" component={MyStore} />
         <Drawer.Screen name="Liên hệ" component={ContactScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
