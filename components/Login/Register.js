@@ -14,15 +14,59 @@ const styles = StyleSheet.create({
         flex: 5,
     },
     Sale_Zone_vn: {
-        flex: 20,
+        flex: 30,
         alignItems: 'center',
         alignContent: 'center'
     },
     Sale_Zone_vn_name: {
         fontSize: 25,
+        marginTop: 10,
         color: '#fefeff',
         textTransform: 'uppercase',
     },
+    login_input_fields: {
+        flex: 55,
+
+    },
+    phone_login_input: {
+        width: 250,
+        marginBottom: 5,
+        borderRadius: 25,
+        backgroundColor: '#e42628',
+        color: 'white',
+    },
+    password_login_input: {
+        width: 250,
+        marginBottom: 5,
+        borderRadius: 25,
+        backgroundColor: '#e42628',
+        color: 'white',
+    },
+    name_register_input: {
+        width: 250,
+        marginBottom: 5,
+        borderRadius: 25,
+        backgroundColor: '#e42628',
+        color: 'white',
+    },
+    register_button: {
+        backgroundColor: '#e8e9ff', alignItems: 'center',
+        justifyContent: 'center', borderRadius: 25,
+        paddingTop: 15,
+        paddingBottom: 15,
+        width: 250,
+    },
+    return_login: {
+        alignItems: 'center'
+    },
+    login: {
+        marginTop: 5,
+        color: '#f79710'
+    },
+    submit_text: {
+        textTransform: 'uppercase',
+        color: '#e42628',
+    }
 
 })
 
@@ -33,12 +77,38 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: '',
             phone: '',
             password: '',
+            confirmPassword: '',
             isLoggedIn: false,
             user: []
         };
     }
+
+    submitRegisterHandler = () => {
+        const { name, phone, password, confirmPassword } = this.state;
+        if (password !== confirmPassword) {
+            Alert.alert('Thông báo', 'mật khẩu nhập lại không chính xác', [
+
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ])
+        }
+        const url = "http://103.102.46.103:3000/user_register";
+        Axios.post(url, { name: name, phone: phone, password: password }).
+            then(res => {
+                console.log(res);
+                Alert.alert('Thông báo', 'Đăng ký thành công', [
+                    {
+                        text: 'OK', onPress: () => console.log('ok')
+                    }
+                ])
+            }).
+            catch(error => {
+                console.log(error)
+            })
+    }
+
 
 
     render() {
@@ -64,12 +134,23 @@ class Register extends Component {
                         </View>
 
                         <View style={styles.login_input_fields}>
+                            <TextInput value={this.state.name} name="name" onChangeText={(value) => this.setState({ name: value })} style={styles.name_register_input}
+                                placeholder="  Tên tài khoản" placeholderTextColor="#ede6e6"></TextInput>
                             <TextInput value={this.state.phone} name="phone" onChangeText={(value) => this.setState({ phone: value })} style={styles.phone_login_input}
                                 placeholder="  Số điện thoại" placeholderTextColor="#ede6e6"></TextInput>
+                            <TextInput  secureTextEntry={true} value={this.state.password} name="password" onChangeText={(value) => this.setState({ password: value })} style={styles.password_login_input}
+                                placeholder="  Mật khẩu" placeholderTextColor="#ede6e6"></TextInput>
+                            <TextInput  secureTextEntry={true} value={this.state.confirmPassword} name="confirmPassword" onChangeText={(value) => this.setState({ confirmPassword: value })} style={styles.password_login_input}
+                                placeholder="  Nhập lại mật khẩu" placeholderTextColor="#ede6e6"></TextInput>
 
-                            <Text style={styles.forget_password}>Quên mật khẩu</Text>
-                            <Link style={styles.register} to="/"><Text style={styles.register}>Đăng Nhập</Text></Link>
-
+                            <TouchableOpacity onPress={this.submitRegisterHandler} >
+                                <View style={styles.register_button}>
+                                    <Text style={styles.submit_text}>Đăng ký</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <View style={styles.return_login}>
+                                <Link style={styles.login} to="/"><Text style={styles.login}>Đăng Nhập</Text></Link>
+                            </View>
                         </View>
                         <Text style={styles.Salezone_app}>SALEZONE APP</Text>
                     </ImageBackground>

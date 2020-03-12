@@ -94,12 +94,12 @@ class Login extends Component {
     submitLoginHandler = () => {
 
         // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        const url = "http://103.102.46.103:3000/admin_login/";
+        const url = "http://103.102.46.103:3000/user_login";
         Axios.post(url, {
             phone: this.state.phone,
             password: this.state.password
         }).then(response => {
-            console.log(response);
+            console.log(response.data);
             if (response.data[0].phone === this.state.phone) {
                 // Alert.alert('Đăng nhập thành công', 'Tiếp tục đăng nhập?', [
                 //     {
@@ -113,7 +113,7 @@ class Login extends Component {
                     isLoggedIn: true,
                     user: response.data[0]
                 })
-                console.log(response.data[0])
+                console.log(response.data[0].phone)
                 console.log(this.state);
             }
         }).catch(error => {
@@ -145,7 +145,7 @@ class Login extends Component {
 
                         <View style={styles.login_input_fields}>
                             <TextInput value={this.state.phone} name="phone" onChangeText={(value) => this.setState({ phone: value })} style={styles.phone_login_input}
-                                placeholder="  Tên đăng nhập" placeholderTextColor="#ede6e6"></TextInput>
+                                placeholder="  Số điện thoại" placeholderTextColor="#ede6e6"></TextInput>
                             <TextInput secureTextEntry={true} value={this.state.password} name="password" onChangeText={(value) => this.setState({ password: value })} style={styles.password_login_input}
                                 placeholder="  password" placeholderTextColor="#ede6e6"></TextInput>
                             {/* <Button title="Đăng Nhập" color="#e1e2fe" style={styles.submit_button}></Button> */}
