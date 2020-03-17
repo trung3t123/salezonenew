@@ -1,18 +1,19 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { Text, View, SafeAreaView, Image, TouchableOpacity, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {CustomHeader} from './components/CustomHeader';
+import { CustomHeader } from './components/CustomHeader';
 import { IMAGE } from './constants/images';
-import {HomeScreen} from './components/tabs/HomeScreen';
-import {FavoriteStoreScreen} from './components/tabs/FavoriteStoreScreen';
-import {NotificationScreen} from './components/tabs/NotificationScreen';
-import {AccountScreen} from './components/tabs/AccountScreen';
-import {ContactScreen} from './components/side_menu/ContactScreen';
-import {ProductScreen} from './components/side_menu/products/ProductScreen';
-import {MyStore} from './components/side_menu/mystore/MyStore';
+import { HomeScreen } from './components/tabs/HomeScreen';
+import { FavoriteStoreScreen } from './components/tabs/FavoriteStoreScreen';
+import { NotificationScreen } from './components/tabs/NotificationScreen';
+import { AccountScreen } from './components/tabs/AccountScreen';
+import { ContactScreen } from './components/side_menu/ContactScreen';
+import { ProductScreen } from './components/side_menu/products/ProductScreen';
+import { MyStore } from './components/side_menu/mystore/MyStore';
+import StoreDetails from './components/Store/StoreDetails';
 function HomeDetailScreen() {
   return (
     <View style={{ flex: 1 }}>
@@ -55,8 +56,6 @@ function AccountDetailScreen() {
       <CustomHeader title="Account detail" />
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Account Detail Screen!</Text>
-
-
       </View>
     </SafeAreaView>
 
@@ -64,46 +63,9 @@ function AccountDetailScreen() {
 }
 
 const Tab = createBottomTabNavigator();
-const navOptionHandler = () => ({
-  headerShown: false
-})
-const StackHome = createStackNavigator();
-function HomeStack() {
-  return (
-    <StackHome.Navigator initialRouteName="Home">
-      <StackHome.Screen name="Home" component={HomeScreen} options={navOptionHandler} />
 
-      <StackHome.Screen name="HomeDetail" component={HomeDetailScreen} />
-    </StackHome.Navigator>
-  )
-}
-const StackFavoriteStore = createStackNavigator();
-function FavoriteStoreStack() {
-  return (
-    <StackFavoriteStore.Navigator initialRouteName="FavoriteStore">
-      <StackFavoriteStore.Screen name="FavoriteStore" component={FavoriteStoreScreen} options={navOptionHandler} />
-      <StackFavoriteStore.Screen name="FavoriteStoreDetail" component={FavoriteStoreDetailScreen} />
-    </StackFavoriteStore.Navigator>
-  )
-}
-const StackNotification = createStackNavigator();
-function NotificationStack() {
-  return (
-    <StackNotification.Navigator initialRouteName="Notification">
-      <StackNotification.Screen name="Notification" component={NotificationScreen} options={navOptionHandler} />
-      <StackNotification.Screen name="NotificationStackDetail" component={NotificationDetailScreen} />
-    </StackNotification.Navigator>
-  )
-}
-const StackAccount = createStackNavigator();
-function AccountStack() {
-  return (
-    <StackAccount.Navigator initialRouteName="Account">
-      <StackAccount.Screen name="Account" component={AccountScreen} options={navOptionHandler} />
-      <StackAccount.Screen name="AccountDetail" component={AccountDetailScreen} />
-    </StackAccount.Navigator>
-  )
-}
+
+const Stack = createStackNavigator();
 
 function TabNavigator() {
   return (
@@ -123,32 +85,52 @@ function TabNavigator() {
           }
 
           // You can return any component that you like here!
-          return <Image source={iconName} style={{ width: 22, height: 22}} />;
+          return <Image source={iconName} style={{ width: 22, height: 22 }} />;
         },
       })}
       tabBarOptions={{
         activeTintColor: 'red',
         inactiveTintColor: 'black',
-      }} 
+      }}
     >
-      <Tab.Screen name="Trang chủ" component={HomeStack} />
-      <Tab.Screen name="Cửa hàng yêu thích" component={FavoriteStoreStack} />
-      <Tab.Screen name="Thông báo" component={NotificationStack} />
-      <Tab.Screen name="Tài khoản" component={AccountStack} />
+      <Tab.Screen name="Trang chủ" component={HomeScreen} />
+      <Tab.Screen name="Cửa hàng yêu thích" component={FavoriteStoreScreen} />
+      <Tab.Screen name="Thông báo" component={NotificationScreen} />
+      <Tab.Screen name="Tài khoản" component={AccountScreen} />
     </Tab.Navigator>
   );
 
 }
 const Drawer = createDrawerNavigator();
-export default function App() {
-  return (
-    <NavigationContainer>
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    
+  }
+
+
+  render() {
+    return (
       <Drawer.Navigator initialRouteName="Trang chủ">
         <Drawer.Screen name="Trang chủ" component={TabNavigator} />
         <Drawer.Screen name="Sản phẩm" component={ProductScreen} />
         <Drawer.Screen name="Cửa hàng của tôi" component={MyStore} />
         <Drawer.Screen name="Liên hệ" component={ContactScreen} />
+
       </Drawer.Navigator>
-    </NavigationContainer>
-  );
+
+      //    <NavigationContainer>
+      //    <Stack.Navigator initialRouteName="Home">
+      //      <Stack.Screen name="StoreDetails" component={StoreDetails} options={navOptionHandler} />
+      //      <Stack.Screen name="Account" component={AccountScreen} options={navOptionHandler} />
+      //      <Stack.Screen name="Home" component={HomeScreen} options={navOptionHandler} />
+      //      <Stack.Screen name="FavoriteStore" component={FavoriteStoreScreen} options={navOptionHandler} />
+      //      <Stack.Screen name="Notification" component={NotificationScreen} options={navOptionHandler} />
+
+      //    </Stack.Navigator>
+      //  </NavigationContainer>
+
+    );
+  }
 }

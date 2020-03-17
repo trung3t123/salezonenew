@@ -22,7 +22,6 @@ function Item({ nameStore, addressStore, description, image_url }) {
                 <Text style={styles.address}>{addressStore}</Text>
                 <Text style={styles.description}>{description}</Text>
             </View>
-
         </View>
     );
 }

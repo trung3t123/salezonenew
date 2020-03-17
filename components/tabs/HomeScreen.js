@@ -3,8 +3,10 @@ import { Text, View, SafeAreaView, Image, TouchableOpacity, Button, StyleSheet, 
 import { CustomHeader } from '../../index';
 import { IMAGE } from '../../constants/images';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { NearStoreScreen } from './NearStoreScreen';
-import { HighlySearchedStores } from './HighlySearchedStores';
+import { NearStoreScreen } from '../Store/NearStoreScreen';
+import { HighlySearchedStores } from '../Store/HighlySearchedStores';
+import { Route } from 'react-router-dom';
+import StoreDetails from '../Store/StoreDetails';
 const Tab = createMaterialTopTabNavigator();
 export class HomeScreen extends Component {
   constructor(props) {
@@ -39,6 +41,7 @@ export class HomeScreen extends Component {
             <Picker.Item label="TP. Hồ Chí Minh" value="HCM" />
           </Picker>
         </View>
+
         <Tab.Navigator initialRouteName="Xem nhiều" lazyPlaceholder="Waiting..."
           tabBarOptions={{
             pressColor: 'gray', activeTintColor: 'red', inactiveTintColor: 'black', indicatorStyle: { backgroundColor: 'red' }, style: { marginTop: 20 }

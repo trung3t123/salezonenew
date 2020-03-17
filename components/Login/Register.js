@@ -138,9 +138,9 @@ class Register extends Component {
                                 placeholder="  Tên tài khoản" placeholderTextColor="#ede6e6"></TextInput>
                             <TextInput value={this.state.phone} name="phone" onChangeText={(value) => this.setState({ phone: value })} style={styles.phone_login_input}
                                 placeholder="  Số điện thoại" placeholderTextColor="#ede6e6"></TextInput>
-                            <TextInput  secureTextEntry={true} value={this.state.password} name="password" onChangeText={(value) => this.setState({ password: value })} style={styles.password_login_input}
+                            <TextInput secureTextEntry={true} value={this.state.password} name="password" onChangeText={(value) => this.setState({ password: value })} style={styles.password_login_input}
                                 placeholder="  Mật khẩu" placeholderTextColor="#ede6e6"></TextInput>
-                            <TextInput  secureTextEntry={true} value={this.state.confirmPassword} name="confirmPassword" onChangeText={(value) => this.setState({ confirmPassword: value })} style={styles.password_login_input}
+                            <TextInput secureTextEntry={true} value={this.state.confirmPassword} name="confirmPassword" onChangeText={(value) => this.setState({ confirmPassword: value })} style={styles.password_login_input}
                                 placeholder="  Nhập lại mật khẩu" placeholderTextColor="#ede6e6"></TextInput>
 
                             <TouchableOpacity onPress={this.submitRegisterHandler} >
@@ -149,7 +149,7 @@ class Register extends Component {
                                 </View>
                             </TouchableOpacity>
                             <View style={styles.return_login}>
-                                <Link style={styles.login} to="/"><Text style={styles.login}>Đăng Nhập</Text></Link>
+                                <TouchableOpacity><Text onPress={() => { this.props.navigation.navigate('Login') }} style={styles.login}>Đăng Nhập</Text></TouchableOpacity>
                             </View>
                         </View>
                         <Text style={styles.Salezone_app}>SALEZONE APP</Text>

@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
 
 
 
-
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -93,7 +92,6 @@ class Login extends Component {
 
     submitLoginHandler = () => {
 
-        // const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const url = "http://103.102.46.103:3000/user_login";
         Axios.post(url, {
             phone: this.state.phone,
@@ -101,18 +99,8 @@ class Login extends Component {
         }).then(response => {
             console.log(response.data);
             if (response.data[0].phone === this.state.phone) {
-                // Alert.alert('Đăng nhập thành công', 'Tiếp tục đăng nhập?', [
-                //     {
-                //         text: 'Cancel',
-                //         onPress: () => console.log('Cancel Pressed'),
-                //         style: 'cancel',
-                //     },
-                //     { text: 'OK', onPress: () => console.log('OK Pressed') },
-                // ])
-                this.setState({
-                    isLoggedIn: true,
-                    user: response.data[0]
-                })
+                
+                this.props.navigation.navigate('App');
                 console.log(response.data[0].phone)
                 console.log(this.state);
             }
@@ -155,7 +143,7 @@ class Login extends Component {
                                 </View>
                             </TouchableOpacity>
                             <Text style={styles.forget_password}>Quên mật khẩu</Text>
-                            <Link style={styles.register} to="/DangKy"><Text style={styles.register}>Đăng Ký</Text></Link>
+                            <TouchableOpacity><Text onPress={() => {this.props.navigation.navigate('Register')}} style={styles.register}>Đăng Ký</Text></TouchableOpacity>
 
                         </View>
                         <Text style={styles.Salezone_app}>SALEZONE APP</Text>

@@ -3,7 +3,7 @@ import { Text, View, SafeAreaView, Image, TouchableOpacity, Button } from 'react
 import {CustomHeader} from '../../index';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { HomeScreen} from './HomeScreen';
-import { NearStoreScreen} from './NearStoreScreen'
+import { NearStoreScreen} from '../Store/NearStoreScreen'
 const Tab = createMaterialTopTabNavigator();
 export class AccountScreen extends Component {
     constructor(props){
